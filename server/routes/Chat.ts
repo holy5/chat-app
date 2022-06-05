@@ -3,8 +3,10 @@ const router = express.Router();
 
 import jwtVerify from "../middlewares/authMiddleware";
 
-import { createChat } from "../controllers/Chat";
+import { accessChat, createGroupChat, getChatUsers } from "../controllers/Chat";
 
-router.route("/create").post(jwtVerify, createChat);
+router.route("/create").post(jwtVerify, createGroupChat);
+router.route("/").post(jwtVerify, accessChat);
+router.route("/").get(jwtVerify, getChatUsers);
 
 export default router;
